@@ -1,12 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import { getAllUsers } from "../api/auth";
+import UserContext from "../context/UserContext";
+import { Navigate } from "react-router-dom";
 
 const User = () => {
   const { data: users } = useQuery({
     queryKey: ["users"],
     queryFn: getAllUsers,
   });
+
+  const [user, setUser] = useContext(UserContext);
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+
   return (
     <div className="bg-gray-900 min-h-screen h-screen flex items-center justify-center absolute inset-0 z-[-1]">
       <div className="max-w-[90%] overflow-scroll w-full px-6 py-8 bg-gray-800 rounded-md shadow-md max-h-[80%]">
