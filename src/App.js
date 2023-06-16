@@ -7,10 +7,10 @@ import Register from "./pages/Register";
 import Notes from "./pages/Notes";
 import Note from "./pages/Note";
 import Users from "./pages/Users";
-import UserContext from "./context/UserContext";
-import { useEffect, useState } from "react";
 import { checkToken } from "./api/auth";
-
+import { useEffect, useState } from "react";
+import UserContext from "./context/UserContext";
+import { Navigate } from "react-router-dom/dist/umd/react-router-dom.development";
 function App() {
   const [user, setUser] = useState(false);
 
